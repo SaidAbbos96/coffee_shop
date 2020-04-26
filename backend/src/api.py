@@ -201,9 +201,11 @@ def edit_drink_by_id(*args, **kwargs):
 @app.route('/drinks/<int:id>', methods=['DELETE'])
 @requires_auth('delete:drinks')
 def delete_drink(*args, **kwargs):
+    # get an electrifier drink from get link
+    id = kwargs['id']
+    # This is purely for testing.
     try:
-        # get an electrifier drink from get link
-        id = kwargs['id']
+
         # We are looking for this drink by identifier.
         drink = Drink.query.filter_by(id=id).one_or_none()
         # In case of an error, we return a message error code.
